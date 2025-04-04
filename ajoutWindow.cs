@@ -12,12 +12,9 @@ namespace FormNomExplicite
 {
     public partial class ajoutWindow : Form
     {
-        private Dictionary<int, TextBox> enfantTextBoxes;
         public ajoutWindow()
         {
             InitializeComponent();
-            enfantTextBoxes = new Dictionary<int, TextBox>();
-            updDownElement.ValueChanged += udElement_ValueChanged!;
         }
 
         private void ajoutWindow_Load(object sender, EventArgs e)
@@ -44,14 +41,18 @@ namespace FormNomExplicite
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-
+            string prenom = textBoxPrenom.Text;
+            Console.WriteLine(prenom);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-
+            if (textBox1_TextChanged != null)
+            {
+                btnEnregistrer.Enabled = true;
+            }
         }
 
         private void textBox4_TextChanged(object sender, EventArgs e)
@@ -59,34 +60,30 @@ namespace FormNomExplicite
 
         }
 
-        private void udElement_ValueChanged(object sender, EventArgs e)
+        private void nudElement_ValueChanged(object sender, EventArgs e)
         {
-            int newCount = (int)updDownElement.Value;
-            UpdateEnfantTextBoxes(newCount);
+            int nbEnfants = (int)updDownElement.Value;
+            UpdateEnfantTextBoxes(nbEnfants);
         }
 
-        private void UpdateEnfantTextBoxes(int newCount)
+        private void UpdateEnfantTextBoxes(int nbEnfants)
         {
             // Supprimer les TextBox en trop
-            while (enfantTextBoxes.Count > newCount)
+            while(flpEnfants.Controls.Count > nbEnfants)
             {
-                int keyToRemove = enfantTextBoxes.Keys.Max();
-                flpEnfants.Controls.Remove(enfantTextBoxes[keyToRemove]);
-                enfantTextBoxes[keyToRemove].Dispose();
-                enfantTextBoxes.Remove(keyToRemove);
+                flpEnfants.Controls.RemoveAt(flpEnfants.Controls.Count-1);
             }
 
             // Ajouter les TextBox manquantes
-            for (int i = enfantTextBoxes.Count + 1; i <= newCount; i++)
+            while(flpEnfants.Controls.Count < nbEnfants)
             {
                 TextBox newTextBox = new TextBox
                 {
-                    Name = $"textBoxEnfant{i}",
-                    PlaceholderText = $"Prénom enfant{i}",
+                    Name = $"textBoxEnfant{nbEnfants}",
+                    PlaceholderText = $"Prénom enfant{nbEnfants}",
                     Width = 200
                 };
                 flpEnfants.Controls.Add(newTextBox);
-                enfantTextBoxes[i] = newTextBox;
             }
         }
     }

@@ -80,7 +80,7 @@
             btnEnregistrer.TabIndex = 3;
             btnEnregistrer.Text = "Enregistrer";
             btnEnregistrer.UseVisualStyleBackColor = true;
-            btnEnregistrer.Click += button1_Click;
+            btnEnregistrer.Click += btnEnregistrer_Click;
             // 
             // textBoxPrenom
             // 
@@ -106,7 +106,7 @@
             updDownElement.Name = "updDownElement";
             updDownElement.Size = new Size(45, 27);
             updDownElement.TabIndex = 11;
-            updDownElement.ValueChanged += udElement_ValueChanged;
+            updDownElement.ValueChanged += nudElement_ValueChanged;
             // 
             // flpEnfants
             // 

@@ -46,15 +46,5 @@ namespace FormNomExplicite
             modificationsWindow modifications = new modificationsWindow();
             modifications.Show();
         }
-
-        private void btnVisuProfil_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxEnfant1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
