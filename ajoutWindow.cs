@@ -57,7 +57,6 @@ namespace FormNomExplicite
                         verifEnfants = true;
                         prenoms.Add(ctrl.Text.Trim());
                     }
-                    else MessageBox.Show(("Veuillez saisir les prénoms de votre enfant(s)"));
                 }
             }
             return prenoms;
@@ -72,14 +71,14 @@ namespace FormNomExplicite
                 PrenomsEnfants = GetPrenomsEnfants()
             };
 
-            if (contact.Nom != null && contact.Prenom != null && verifEnfants != false) {
+            if (!string.IsNullOrWhiteSpace(contact.Nom) && !string.IsNullOrWhiteSpace(contact.Prenom) && verifEnfants != false) {
                 ContactManager.Contacts.Add(contact);
                 Form1 menu = new Form1();
                 menu.Show();
                 menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été ajouté";
                 //MessageBox.Show($"{contact.Prenom} {contact.Nom} a été ajouté avec {contact.PrenomsEnfants.Count} enfant(s).");
                 this.Close();
-            }
+            } else MessageBox.Show("Veuillez entrer toutes les informations requises");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

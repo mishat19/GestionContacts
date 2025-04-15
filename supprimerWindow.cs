@@ -69,41 +69,49 @@ namespace FormNomExplicite
                 btnContact.Tag = contact;
                 btnContact.Width = flpContacts.Width - 20; // pour bien remplir le panel
                 btnContact.Height = 30;
-                btnContact.Click += BtnContactSuppression_Click!;
-
+                btnContact.Click += activationVisualisation!;
                 flpContacts.Controls.Add(btnContact);
+            }
+        }
+
+        private Contact contactSelectionne;
+
+        private void activationVisualisation(object sender, EventArgs e)
+        {
+            if (sender is Button btn && btn.Tag is Contact contact)
+            {
+                contactSelectionne = contact; //stockage du contact à visualiser
+                btnVisualiser.Enabled = true;
+                btnSupprimer.Enabled = true;
+                contactASupprimer = contactSelectionne;
             }
         }
 
         private Contact contactASupprimer;
 
-        private void BtnContactSuppression_Click(object sender, EventArgs e)
+        private void btnVisualiser_Click(object sender, EventArgs e)
         {
-            if (sender is Button btn && btn.Tag is Contact contact)
+            if (contactSelectionne != null)
             {
-                textBoxNom.Text = contact.Nom;
-                textBoxPrenom.Text = contact.Prenom;
-                updDownElement.Value = contact.PrenomsEnfants.Count;
+                textBoxNom.Text = contactSelectionne.Nom;
+                textBoxPrenom.Text = contactSelectionne.Prenom;
+                updDownElement.Value = contactSelectionne.PrenomsEnfants.Count;
 
-                // Mise à jour des TextBox enfants
                 flpEnfants.Controls.Clear();
 
-                for (int i = 0; i < contact.PrenomsEnfants.Count; i++)
+                for (int i = 0; i < contactSelectionne.PrenomsEnfants.Count; i++)
                 {
                     TextBox tb = new TextBox();
                     tb.Width = 150;
-                    tb.Tag = "PrenomEnfant";
-                    tb.Text = contact.PrenomsEnfants[i];
-                    tb.PlaceholderText = $"Prénom enfant {i + 1}";
-
+                    tb.Text = contactSelectionne.PrenomsEnfants[i];
+                    tb.ReadOnly = true;
                     flpEnfants.Controls.Add(tb);
                 }
 
-                contactASupprimer = contact;
-                btnSupprimer.Enabled = true;
+                //contactASupprimer = contactSelectionne;
+                btnVisualiser.Enabled = false;
             }
         }
-
 
     }
 }

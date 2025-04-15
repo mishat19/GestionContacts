@@ -92,22 +92,26 @@ namespace FormNomExplicite
             }
         }
 
+        private bool verifEnfants = false;
+
         //Récupérer le prénom des enfants
         private List<string> GetPrenomsEnfants()
         {
             List<string> prenoms = new List<string>();
-
             foreach (Control ctrl in flpEnfants.Controls)
             {
-                if (ctrl is TextBox tb && tb.Tag?.ToString() == "PrenomEnfant")
+                if (ctrl is TextBox tb)
                 {
-                    if (!string.IsNullOrEmpty(tb.Text))
-                        prenoms.Add(tb.Text.Trim());
+                    if (!string.IsNullOrEmpty(ctrl.Text))
+                    {
+                        verifEnfants = true;
+                        prenoms.Add(ctrl.Text.Trim());
+                    }
                 }
             }
-
             return prenoms;
         }
+
         private void ChampsModifies(object sender, EventArgs e)
         {
             btnModifContact.Enabled = true;
@@ -121,7 +125,7 @@ namespace FormNomExplicite
 
         private void btnModifContact_Click(object sender, EventArgs e)
         {
-            if (contactSelectionne != null)
+            if (contactSelectionne != null && !string.IsNullOrWhiteSpace(contactSelectionne.Nom) && !string.IsNullOrWhiteSpace(contactSelectionne.Prenom) && verifEnfants != false)
             {
                 contactSelectionne.Nom = textBoxNom.Text;
                 contactSelectionne.Prenom = textBoxPrenom.Text;
@@ -131,7 +135,7 @@ namespace FormNomExplicite
                 menu.Show();
                 menu.labelMessageSysteme.Text = $"{contactSelectionne.Prenom} {contactSelectionne.Nom} a été modifié";
                 this.Close();
-            }
+            } else MessageBox.Show("Veuillez entrer toutes les informations requises");
         }
 
         private void updDownElement_ValueChanged(object sender, EventArgs e)

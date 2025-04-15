@@ -94,6 +94,7 @@
             btnVisualiser.TabIndex = 16;
             btnVisualiser.Text = "Visualiser";
             btnVisualiser.UseVisualStyleBackColor = true;
+            btnVisualiser.Click += btnVisualiser_Click;
             // 
             // textBoxNom
             // 
