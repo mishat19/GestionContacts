@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using GestionnaireContacts;
+﻿using GestionnaireContacts;
 using static FormNomExplicite.Form1;
 
 namespace FormNomExplicite
@@ -71,14 +62,16 @@ namespace FormNomExplicite
                 PrenomsEnfants = GetPrenomsEnfants()
             };
 
-            if (!string.IsNullOrWhiteSpace(contact.Nom) && !string.IsNullOrWhiteSpace(contact.Prenom) && verifEnfants != false) {
+            if (!string.IsNullOrWhiteSpace(contact.Nom) && !string.IsNullOrWhiteSpace(contact.Prenom) && verifEnfants != false)
+            {
                 ContactManager.Contacts.Add(contact);
                 Form1 menu = new Form1();
                 menu.Show();
                 menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été ajouté";
                 //MessageBox.Show($"{contact.Prenom} {contact.Nom} a été ajouté avec {contact.PrenomsEnfants.Count} enfant(s).");
                 this.Close();
-            } else MessageBox.Show("Veuillez entrer toutes les informations requises");
+            }
+            else MessageBox.Show("Veuillez entrer toutes les informations requises");
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

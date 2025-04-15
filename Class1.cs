@@ -8,8 +8,8 @@ namespace GestionnaireContacts
 {
     public class Contact
     {
-        public string Nom { get; set; }
-        public string Prenom { get; set; }
+        public required string Nom { get; set; }
+        public required string Prenom { get; set; }
         public List<string> PrenomsEnfants { get; set; } = new List<string>();
     }
 }

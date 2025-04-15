@@ -56,10 +56,9 @@ namespace FormNomExplicite
             }
         }
 
-        private Contact contactSelectionne;
-        private bool updEnfants;
+        private Contact? contactSelectionne;
 
-        private void BtnContact_Click(object sender, EventArgs e)
+        private void BtnContact_Click(object? sender, EventArgs e) //object? indique au compilateur sender peut être null
         {
             if (sender is Button btn && btn.Tag is Contact contact)
             {
@@ -112,7 +111,7 @@ namespace FormNomExplicite
             return prenoms;
         }
 
-        private void ChampsModifies(object sender, EventArgs e)
+        private void ChampsModifies(object? sender, EventArgs e)
         {
             btnModifContact.Enabled = true;
         }

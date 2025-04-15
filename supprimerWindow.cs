@@ -74,7 +74,7 @@ namespace FormNomExplicite
             }
         }
 
-        private Contact contactSelectionne;
+        private Contact? contactSelectionne; //On veut que ça reste null jusqu'à un Contact sélectionné => autorise d'être null
 
         private void activationVisualisation(object sender, EventArgs e)
         {
@@ -87,7 +87,7 @@ namespace FormNomExplicite
             }
         }
 
-        private Contact contactASupprimer;
+        private Contact? contactASupprimer; //On veut que ça reste null jusqu'à un Contact sélectionné => autorise d'être null
 
         private void btnVisualiser_Click(object sender, EventArgs e)
         {
