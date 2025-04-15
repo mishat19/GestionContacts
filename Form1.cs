@@ -6,7 +6,7 @@ namespace FormNomExplicite
         public Form1()
         {
             InitializeComponent();
-            this.Resize += Form1_Resize;
+            this.Resize += Form1_Resize!;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -26,22 +26,24 @@ namespace FormNomExplicite
 
         private void buttonAjout_Click(object sender, EventArgs e)
         {
-            //FormAjout frmAjout = new FormAjout();
-            //frmAjout show();
             ajoutWindow ajout = new ajoutWindow();
             ajout.Show();
+            this.Hide();
         }
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
             supprimerWindow supprimer = new supprimerWindow();
             supprimer.Show();
+            this.Hide();
         }
 
         private void buttonModifier_Click(object sender, EventArgs e)
         {
             modifierWindow modifier = new modifierWindow();
             modifier.Show();
+
+            this.Hide();
         }
 
         private void labelMessageSysteme_Click_1(object sender, EventArgs e)

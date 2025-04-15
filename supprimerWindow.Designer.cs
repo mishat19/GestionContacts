@@ -76,6 +76,7 @@
             // 
             // btnSupprimer
             // 
+            btnSupprimer.Enabled = false;
             btnSupprimer.Location = new Point(654, 385);
             btnSupprimer.Name = "btnSupprimer";
             btnSupprimer.Size = new Size(102, 38);
@@ -96,6 +97,7 @@
             // 
             // textBoxNom
             // 
+            textBoxNom.Enabled = false;
             textBoxNom.Location = new Point(252, 204);
             textBoxNom.Name = "textBoxNom";
             textBoxNom.PlaceholderText = "Saisir nom";
@@ -104,6 +106,7 @@
             // 
             // textBoxPrenom
             // 
+            textBoxPrenom.Enabled = false;
             textBoxPrenom.Location = new Point(252, 159);
             textBoxPrenom.Name = "textBoxPrenom";
             textBoxPrenom.PlaceholderText = "Saisir prénom";
@@ -112,6 +115,7 @@
             // 
             // updDownElement
             // 
+            updDownElement.Enabled = false;
             updDownElement.Location = new Point(440, 269);
             updDownElement.Name = "updDownElement";
             updDownElement.Size = new Size(45, 27);

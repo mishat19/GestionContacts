@@ -46,8 +46,11 @@ namespace FormNomExplicite
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            confirmationWindow confirmation = new confirmationWindow();
-            confirmation.Show();
+            if (contactASupprimer != null)
+            {
+                confirmationWindow confirmation = new confirmationWindow(contactASupprimer);
+                confirmation.Show();
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -66,15 +69,15 @@ namespace FormNomExplicite
                 btnContact.Tag = contact;
                 btnContact.Width = flpContacts.Width - 20; // pour bien remplir le panel
                 btnContact.Height = 30;
-                btnContact.Click += BtnContact_Click;
+                btnContact.Click += BtnContactSuppression_Click;
 
                 flpContacts.Controls.Add(btnContact);
             }
         }
 
-        private Contact contactSelectionne;
+        private Contact contactASupprimer;
 
-        private void BtnContact_Click(object sender, EventArgs e)
+        private void BtnContactSuppression_Click(object sender, EventArgs e)
         {
             if (sender is Button btn && btn.Tag is Contact contact)
             {
@@ -96,7 +99,8 @@ namespace FormNomExplicite
                     flpEnfants.Controls.Add(tb);
                 }
 
-                contactSelectionne = contact; // pour modifier plus tard
+                contactASupprimer = contact;
+                btnSupprimer.Enabled = true;
             }
         }
 

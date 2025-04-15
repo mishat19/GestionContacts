@@ -7,19 +7,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FormNomExplicite.Form1;
+using GestionnaireContacts;
 
 namespace FormNomExplicite
 {
     public partial class confirmationWindow : Form
     {
-        public confirmationWindow()
+        private Contact contact;
+        public confirmationWindow(Contact contactASupprimer)
         {
             InitializeComponent();
+            this.contact = contactASupprimer;
         }
 
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
-            
+            ContactManager.Contacts.Remove(contact);
+            Form1 menu = new Form1();
+            menu.Show();
+            menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été supprimé";
+            menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été supprimé";
+            this.Close();
         }
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
