@@ -27,7 +27,6 @@ namespace FormNomExplicite
             Form1 menu = new Form1();
             menu.Show();
             menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été supprimé";
-            menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été supprimé";
             this.Close();
         }
         private void btnAnnuler_Click(object sender, EventArgs e)

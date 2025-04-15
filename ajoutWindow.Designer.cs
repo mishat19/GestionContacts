@@ -98,7 +98,6 @@
             textBoxNom.PlaceholderText = "Saisir nom";
             textBoxNom.Size = new Size(339, 27);
             textBoxNom.TabIndex = 8;
-            textBoxNom.TextChanged += textBox4_TextChanged;
             // 
             // updDownElement
             // 

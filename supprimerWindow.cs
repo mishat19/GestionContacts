@@ -69,7 +69,7 @@ namespace FormNomExplicite
                 btnContact.Tag = contact;
                 btnContact.Width = flpContacts.Width - 20; // pour bien remplir le panel
                 btnContact.Height = 30;
-                btnContact.Click += BtnContactSuppression_Click;
+                btnContact.Click += BtnContactSuppression_Click!;
 
                 flpContacts.Controls.Add(btnContact);
             }

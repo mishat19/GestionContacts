@@ -75,6 +75,7 @@
             // 
             // btnModifContact
             // 
+            btnModifContact.Enabled = false;
             btnModifContact.Location = new Point(600, 392);
             btnModifContact.Name = "btnModifContact";
             btnModifContact.Size = new Size(138, 29);
@@ -112,7 +113,6 @@
             // flpEnfants
             // 
             flpEnfants.AutoScroll = true;
-            flpEnfants.Enabled = false;
             flpEnfants.Location = new Point(531, 171);
             flpEnfants.Name = "flpEnfants";
             flpEnfants.Size = new Size(250, 132);
@@ -120,13 +120,16 @@
             // 
             // updDownElement
             // 
+            updDownElement.Enabled = false;
             updDownElement.Location = new Point(447, 276);
             updDownElement.Name = "updDownElement";
             updDownElement.Size = new Size(45, 27);
             updDownElement.TabIndex = 28;
+            updDownElement.ValueChanged += updDownElement_ValueChanged;
             // 
             // textBoxNom
             // 
+            textBoxNom.Enabled = false;
             textBoxNom.Location = new Point(259, 211);
             textBoxNom.Name = "textBoxNom";
             textBoxNom.PlaceholderText = "Saisir nom";
@@ -135,6 +138,7 @@
             // 
             // textBoxPrenom
             // 
+            textBoxPrenom.Enabled = false;
             textBoxPrenom.Location = new Point(259, 166);
             textBoxPrenom.Name = "textBoxPrenom";
             textBoxPrenom.PlaceholderText = "Saisir prénom";
