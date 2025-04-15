@@ -111,6 +111,6 @@
         private Button buttonAjout;
         private Button buttonSupprimer;
         private Button buttonModifier;
-        private Label labelMessageSysteme;
+        public Label labelMessageSysteme;
     }
 }

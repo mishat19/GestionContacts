@@ -43,8 +43,7 @@ namespace FormNomExplicite
 
         private void btnModifContact_Click(object sender, EventArgs e)
         {
-            modificationsWindow modifications = new modificationsWindow();
-            modifications.Show();
+            
         }
     }
 }

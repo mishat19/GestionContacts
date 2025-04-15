@@ -35,11 +35,11 @@
             btnVisualiser = new Button();
             textBoxNom = new TextBox();
             textBoxPrenom = new TextBox();
-            labelPrenoms = new Label();
-            flpEnfants = new FlowLayoutPanel();
             updDownElement = new NumericUpDown();
             flpContacts = new FlowLayoutPanel();
             labelContacts = new Label();
+            labelPrenoms = new Label();
+            flpEnfants = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)updDownElement).BeginInit();
             SuspendLayout();
             // 
@@ -110,24 +110,6 @@
             textBoxPrenom.Size = new Size(233, 27);
             textBoxPrenom.TabIndex = 19;
             // 
-            // labelPrenoms
-            // 
-            labelPrenoms.AutoSize = true;
-            labelPrenoms.Location = new Point(524, 141);
-            labelPrenoms.Name = "labelPrenoms";
-            labelPrenoms.Size = new Size(152, 20);
-            labelPrenoms.TabIndex = 23;
-            labelPrenoms.Text = "Prénoms des enfants :";
-            // 
-            // flpEnfants
-            // 
-            flpEnfants.AutoScroll = true;
-            flpEnfants.Enabled = false;
-            flpEnfants.Location = new Point(524, 164);
-            flpEnfants.Name = "flpEnfants";
-            flpEnfants.Size = new Size(250, 132);
-            flpEnfants.TabIndex = 22;
-            // 
             // updDownElement
             // 
             updDownElement.Location = new Point(440, 269);
@@ -152,6 +134,24 @@
             labelContacts.TabIndex = 25;
             labelContacts.Text = "Noms des contacts :";
             labelContacts.Click += label1_Click;
+            // 
+            // labelPrenoms
+            // 
+            labelPrenoms.AutoSize = true;
+            labelPrenoms.Location = new Point(524, 141);
+            labelPrenoms.Name = "labelPrenoms";
+            labelPrenoms.Size = new Size(152, 20);
+            labelPrenoms.TabIndex = 23;
+            labelPrenoms.Text = "Prénoms des enfants :";
+            // 
+            // flpEnfants
+            // 
+            flpEnfants.AutoScroll = true;
+            flpEnfants.Enabled = false;
+            flpEnfants.Location = new Point(524, 164);
+            flpEnfants.Name = "flpEnfants";
+            flpEnfants.Size = new Size(250, 132);
+            flpEnfants.TabIndex = 22;
             // 
             // supprimerWindow
             // 
@@ -187,10 +187,10 @@
         private Button btnVisualiser;
         private TextBox textBoxNom;
         private TextBox textBoxPrenom;
-        private Label labelPrenoms;
-        private FlowLayoutPanel flpEnfants;
         private NumericUpDown updDownElement;
         private FlowLayoutPanel flpContacts;
         private Label labelContacts;
+        private Label labelPrenoms;
+        private FlowLayoutPanel flpEnfants;
     }
 }

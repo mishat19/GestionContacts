@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GestionnaireContacts;
+using static FormNomExplicite.Form1;
 
 namespace FormNomExplicite
 {
@@ -41,10 +43,37 @@ namespace FormNomExplicite
             this.Close();
         }
 
+        //Récupérer le prénom de tous les enfants
+        private List<string> GetPrenomsEnfants()
+        {
+            List<string> prenoms = new List<string>();
+            foreach (Control ctrl in flpEnfants.Controls) {
+                if(ctrl is TextBox tb) {
+                    if (!string.IsNullOrEmpty(ctrl.Text))
+                    {
+                        prenoms.Add(ctrl.Text.Trim());
+                    }
+                    }
+            }
+            return prenoms;
+        }
+
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            string prenom = textBoxPrenom.Text;
-            Console.WriteLine(prenom);
+            var contact = new Contact
+            {
+                Nom = textBoxNom.Text,
+                Prenom = textBoxPrenom.Text,
+                PrenomsEnfants = GetPrenomsEnfants()
+            };
+
+            ContactManager.Contacts.Add(contact);
+
+            Form1 menu = new Form1();
+            menu.Show();
+            menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été ajouté";
+            //MessageBox.Show($"{contact.Prenom} {contact.Nom} a été ajouté avec {contact.PrenomsEnfants.Count} enfant(s).");
+            this.Close();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

@@ -75,7 +75,6 @@
             // 
             // btnModifContact
             // 
-            btnModifContact.Enabled = false;
             btnModifContact.Location = new Point(600, 392);
             btnModifContact.Name = "btnModifContact";
             btnModifContact.Size = new Size(138, 29);
