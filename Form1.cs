@@ -7,16 +7,12 @@ namespace FormNomExplicite
         {
             InitializeComponent();
             this.Resize += Form1_Resize!;
+            ContactManager.ChargerContacts();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             labelMessageSysteme.Text = "";
-        }
-
-        public static class ContactManager
-        {
-            public static List<Contact> Contacts { get; set; } = new List<Contact>();
         }
 
         private void label1_Click(object sender, EventArgs e)

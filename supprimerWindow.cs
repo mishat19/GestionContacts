@@ -22,7 +22,7 @@ namespace FormNomExplicite
 
         private void supprimerWindow_Load(object sender, EventArgs e)
         {
-            btnSupprimerWindow.Focus(); //Focus
+            
         }
 
         private void btnAjouterWindow_Click(object sender, EventArgs e)

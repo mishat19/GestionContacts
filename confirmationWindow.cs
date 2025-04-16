@@ -24,6 +24,7 @@ namespace FormNomExplicite
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
             ContactManager.Contacts.Remove(contact);
+            ContactManager.SauvegarderContacts(); //Sauvegarder du contact dans mon JSON
             Form1 menu = new Form1();
             menu.Show();
             menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été supprimé";

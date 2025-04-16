@@ -12,6 +12,7 @@ using static FormNomExplicite.Form1;
 
 namespace FormNomExplicite
 {
+    using GestionnaireContacts;
     public partial class modifierWindow : Form
     {
         public modifierWindow()
@@ -22,7 +23,7 @@ namespace FormNomExplicite
 
         private void modifierWindow_Load(object sender, EventArgs e)
         {
-            btnModifierWindow.Focus(); //Focus
+
         }
 
         private void btnAjouterWindow_Click(object sender, EventArgs e)
@@ -91,8 +92,6 @@ namespace FormNomExplicite
             }
         }
 
-        private bool verifEnfants = false;
-
         //Récupérer le prénom des enfants
         private List<string> GetPrenomsEnfants()
         {
@@ -101,11 +100,7 @@ namespace FormNomExplicite
             {
                 if (ctrl is TextBox tb)
                 {
-                    if (!string.IsNullOrEmpty(ctrl.Text))
-                    {
-                        verifEnfants = true;
-                        prenoms.Add(ctrl.Text.Trim());
-                    }
+                    prenoms.Add(ctrl.Text.Trim());
                 }
             }
             return prenoms;
@@ -124,11 +119,17 @@ namespace FormNomExplicite
 
         private void btnModifContact_Click(object sender, EventArgs e)
         {
-            if (contactSelectionne != null && !string.IsNullOrWhiteSpace(contactSelectionne.Nom) && !string.IsNullOrWhiteSpace(contactSelectionne.Prenom) && verifEnfants != false)
+            string Nom = textBoxNom.Text.Trim();
+            string Prenom = textBoxPrenom.Text.Trim();
+            List<string> enfants = GetPrenomsEnfants();
+
+            if (contactSelectionne != null && !string.IsNullOrWhiteSpace(contactSelectionne.Nom) && !string.IsNullOrWhiteSpace(contactSelectionne.Prenom) && enfants.All(e => !string.IsNullOrWhiteSpace(e)))
             {
                 contactSelectionne.Nom = textBoxNom.Text;
                 contactSelectionne.Prenom = textBoxPrenom.Text;
-                contactSelectionne.PrenomsEnfants = GetPrenomsEnfants();
+                contactSelectionne.PrenomsEnfants = enfants;
+                
+                ContactManager.SauvegarderContacts(); //Sauvegarder du contact dans mon JSON
 
                 Form1 menu = new Form1();
                 menu.Show();

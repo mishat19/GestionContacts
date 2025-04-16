@@ -3,6 +3,7 @@ using static FormNomExplicite.Form1;
 
 namespace FormNomExplicite
 {
+    using GestionnaireContacts;
     public partial class ajoutWindow : Form
     {
         public ajoutWindow()
@@ -12,7 +13,7 @@ namespace FormNomExplicite
 
         private void ajoutWindow_Load(object sender, EventArgs e)
         {
-            btnAjouterWindow.Focus(); //Focus
+            
         }
 
         private void btnAjouterWindow_Click(object sender, EventArgs e)
@@ -34,7 +35,6 @@ namespace FormNomExplicite
             this.Close();
         }
 
-        private bool verifEnfants = false;
         //Récupérer le prénom de tous les enfants
         private List<string> GetPrenomsEnfants()
         {
@@ -43,11 +43,7 @@ namespace FormNomExplicite
             {
                 if (ctrl is TextBox tb)
                 {
-                    if (!string.IsNullOrEmpty(ctrl.Text))
-                    {
-                        verifEnfants = true;
-                        prenoms.Add(ctrl.Text.Trim());
-                    }
+                    prenoms.Add(ctrl.Text.Trim());
                 }
             }
             return prenoms;
@@ -55,16 +51,22 @@ namespace FormNomExplicite
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            var contact = new Contact
-            {
-                Nom = textBoxNom.Text,
-                Prenom = textBoxPrenom.Text,
-                PrenomsEnfants = GetPrenomsEnfants()
-            };
+            string Nom = textBoxNom.Text.Trim();
+            string Prenom = textBoxPrenom.Text.Trim();
+            List<string> enfants = GetPrenomsEnfants();
 
-            if (!string.IsNullOrWhiteSpace(contact.Nom) && !string.IsNullOrWhiteSpace(contact.Prenom) && verifEnfants != false)
+            if (!string.IsNullOrWhiteSpace(Nom) && !string.IsNullOrWhiteSpace(Prenom) && enfants.All(e => !string.IsNullOrWhiteSpace(e)))
             {
+                var contact = new Contact
+                {
+                    Nom = textBoxNom.Text,
+                    Prenom = textBoxPrenom.Text,
+                    PrenomsEnfants = enfants
+                };
+
                 ContactManager.Contacts.Add(contact);
+                ContactManager.SauvegarderContacts(); //Sauvegarder du contact dans mon JSON
+                
                 Form1 menu = new Form1();
                 menu.Show();
                 menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été ajouté";
