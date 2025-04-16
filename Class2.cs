@@ -9,10 +9,13 @@ namespace GestionnaireContacts
     {
         public static List<Contact> Contacts { get; set; } = new List<Contact>();
         private static readonly string filePath = "contacts.json";
+        //private static readonly string filePath = Path.Combine(Directory.GetParent(AppDomain.CurrentDomain.BaseDirectory)!.Parent!.Parent!.Parent!.FullName, "contacts.json");
+
 
         public static void SauvegarderContacts()
         {
             string json = JsonSerializer.Serialize(Contacts, new JsonSerializerOptions { WriteIndented = true });
+            //MessageBox.Show($"Chemin JSON :\n{filePath}");
             File.WriteAllText(filePath, json);
         }
 
