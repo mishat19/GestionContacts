@@ -133,7 +133,7 @@ namespace FormNomExplicite
 
                 Form1 menu = new Form1();
                 menu.Show();
-                menu.labelMessageSysteme.Text = $"{contactSelectionne.Prenom} {contactSelectionne.Nom} a été modifié";
+                menu.AfficherMessage($"Le contact {contactSelectionne.Prenom} {contactSelectionne.Nom} a été modifié");
                 this.Close();
             } else MessageBox.Show("Veuillez entrer toutes les informations requises");
         }

@@ -92,7 +92,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(784, 450);
             Controls.Add(labelMessageSysteme);
             Controls.Add(buttonModifier);
             Controls.Add(buttonSupprimer);

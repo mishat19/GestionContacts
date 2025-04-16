@@ -15,10 +15,13 @@ namespace FormNomExplicite
     public partial class confirmationWindow : Form
     {
         private Contact contact;
-        public confirmationWindow(Contact contactASupprimer)
+        private supprimerWindow fenetreSuppression;
+
+        public confirmationWindow(Contact contactASupprimer, supprimerWindow fenetre)
         {
             InitializeComponent();
             this.contact = contactASupprimer;
+            this.fenetreSuppression = fenetre;
         }
 
         private void btnConfirmer_Click(object sender, EventArgs e)
@@ -27,8 +30,9 @@ namespace FormNomExplicite
             ContactManager.SauvegarderContacts(); //Sauvegarder du contact dans mon JSON
             Form1 menu = new Form1();
             menu.Show();
-            menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été supprimé";
+            menu.AfficherMessage($"Le contact {contact.Prenom} {contact.Nom} a été supprimé");
             this.Close();
+            fenetreSuppression.Close();
         }
         private void btnAnnuler_Click(object sender, EventArgs e)
         {

@@ -48,7 +48,7 @@ namespace FormNomExplicite
         {
             if (contactASupprimer != null)
             {
-                confirmationWindow confirmation = new confirmationWindow(contactASupprimer);
+                confirmationWindow confirmation = new confirmationWindow(contactASupprimer, this);
                 confirmation.Show();
             }
         }

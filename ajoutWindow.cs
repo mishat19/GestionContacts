@@ -69,7 +69,7 @@ namespace FormNomExplicite
                 
                 Form1 menu = new Form1();
                 menu.Show();
-                menu.labelMessageSysteme.Text = $"{contact.Prenom} {contact.Nom} a été ajouté";
+                menu.AfficherMessage($"{contact.Prenom} {contact.Nom} a été ajouté à vos contacts");
                 //MessageBox.Show($"{contact.Prenom} {contact.Nom} a été ajouté avec {contact.PrenomsEnfants.Count} enfant(s).");
                 this.Close();
             }
