@@ -10,8 +10,8 @@ namespace GestionnaireContacts
         public static List<Contact> Contacts { get; set; } = new List<Contact>();
 
         //Utilisation de AppData pour contact.json
-        private static readonly string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "GestionContacts");
-        private static readonly string filePath = Path.Combine(appDataPath, "contacts.json");
+        public static readonly string appDataPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "GestionContacts");
+        public static readonly string filePath = Path.Combine(appDataPath, "contacts.json");
 
         public static void SauvegarderContacts()
         {

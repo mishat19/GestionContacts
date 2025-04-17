@@ -70,5 +70,34 @@ namespace FormNomExplicite
             CentrerLabel();
         }
 
+        private void btnImporter_Click(object sender, EventArgs e)
+        {
+            using OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Fichier JSON (*.json)|*.json";
+            openFileDialog.Title = "Sélectionner un fichier contacts.json";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Assurer que le dossier AppData existe
+                    if (!Directory.Exists(ContactManager.appDataPath))
+                        Directory.CreateDirectory(ContactManager.appDataPath);
+
+                    //Copie et remplaçage si existence
+                    File.Copy(openFileDialog.FileName, ContactManager.filePath, overwrite: true);
+
+                    MessageBox.Show("Importation réussie !", "Succès", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Charger fichier importé
+                    ContactManager.ChargerContacts();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erreur lors de l'importation :\n{ex.Message}", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
     }
 }

@@ -33,6 +33,7 @@
             buttonSupprimer = new Button();
             buttonModifier = new Button();
             labelMessageSysteme = new Label();
+            btnImporter = new Button();
             SuspendLayout();
             // 
             // labelTitre
@@ -88,11 +89,22 @@
             labelMessageSysteme.Text = "Message système";
             labelMessageSysteme.Click += labelMessageSysteme_Click_1;
             // 
+            // btnImporter
+            // 
+            btnImporter.Location = new Point(630, 410);
+            btnImporter.Name = "btnImporter";
+            btnImporter.Size = new Size(142, 28);
+            btnImporter.TabIndex = 5;
+            btnImporter.Text = "Importer fichier";
+            btnImporter.UseVisualStyleBackColor = true;
+            btnImporter.Click += btnImporter_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 450);
+            Controls.Add(btnImporter);
             Controls.Add(labelMessageSysteme);
             Controls.Add(buttonModifier);
             Controls.Add(buttonSupprimer);
@@ -112,5 +124,6 @@
         private Button buttonSupprimer;
         private Button buttonModifier;
         public Label labelMessageSysteme;
+        private Button btnImporter;
     }
 }
