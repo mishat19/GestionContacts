@@ -6,6 +6,7 @@ The user can primarily **add, delete, or modify** a simple contact (first name, 
 
 However, I wanted to add a contact backup system, so I added a **.JSON file** to my program.
 
-But my curiosity gave me the idea of ​​creating **an executable program** to learn how to do this. After creating this, I tried to make the .JSON file functional because it wasn't working since it was stored in ProgramFiles, so I made sure it was stored in AppData along with all the user data.
+But my curiosity gave me the idea of ​​creating **an executable program** to learn how to do this. After creating this, I tried to make the .JSON file functional because it wasn't working since it was stored in ProgramFiles, so I made sure it was stored in AppData along with all the user data. By the way, you can **import your own contact.json** file to work on a new device.
 
-Later, I would implement the ability to **add your own file** to make it more realistic.
+
+Mishat Ribongrant
