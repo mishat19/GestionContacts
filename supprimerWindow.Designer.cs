@@ -38,8 +38,8 @@
             labelPrenoms = new Label();
             flpEnfants = new FlowLayoutPanel();
             updDownElement = new NumericUpDown();
-            flpContacts = new FlowLayoutPanel();
             labelContacts = new Label();
+            lstContacts = new ListBox();
             ((System.ComponentModel.ISupportInitialize)updDownElement).BeginInit();
             SuspendLayout();
             // 
@@ -93,6 +93,7 @@
             btnVisualiser.TabIndex = 16;
             btnVisualiser.Text = "Visualiser";
             btnVisualiser.UseVisualStyleBackColor = true;
+            btnVisualiser.Click += btnVisualiser_Click;
             // 
             // textBoxNom
             // 
@@ -135,14 +136,6 @@
             updDownElement.Size = new Size(45, 27);
             updDownElement.TabIndex = 21;
             // 
-            // flpContacts
-            // 
-            flpContacts.AutoScroll = true;
-            flpContacts.Location = new Point(12, 164);
-            flpContacts.Name = "flpContacts";
-            flpContacts.Size = new Size(218, 132);
-            flpContacts.TabIndex = 24;
-            // 
             // labelContacts
             // 
             labelContacts.AutoSize = true;
@@ -153,13 +146,22 @@
             labelContacts.Text = "Noms des contacts :";
             labelContacts.Click += label1_Click;
             // 
+            // lstContacts
+            // 
+            lstContacts.FormattingEnabled = true;
+            lstContacts.Location = new Point(12, 164);
+            lstContacts.Name = "lstContacts";
+            lstContacts.Size = new Size(205, 124);
+            lstContacts.TabIndex = 26;
+            lstContacts.SelectedIndexChanged += lstContacts_SelectedIndexChanged;
+            // 
             // supprimerWindow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lstContacts);
             Controls.Add(labelContacts);
-            Controls.Add(flpContacts);
             Controls.Add(labelPrenoms);
             Controls.Add(flpEnfants);
             Controls.Add(updDownElement);
@@ -190,7 +192,7 @@
         private Label labelPrenoms;
         private FlowLayoutPanel flpEnfants;
         private NumericUpDown updDownElement;
-        private FlowLayoutPanel flpContacts;
         private Label labelContacts;
+        private ListBox lstContacts;
     }
 }

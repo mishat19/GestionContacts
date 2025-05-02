@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BiblioContacts;
 
 namespace FormNomExplicite
 {
     public partial class ajoutWindow : Form
     {
-        public ajoutWindow()
+        private ListeContacts L;
+        public ajoutWindow(ListeContacts listeContacts)
         {
             InitializeComponent();
+            L = listeContacts;
         }
 
         private void ajoutWindow_Load(object sender, EventArgs e)
@@ -41,10 +44,27 @@ namespace FormNomExplicite
             this.Close();
         }
 
+        //Récupérer le prénom de tous les enfants
+        private List<string> GetPrenomsEnfants()
+        {
+            List<string> prenoms = new List<string>();
+            foreach (Control ctrl in flpEnfants.Controls)
+            {
+                if (ctrl is TextBox tb)
+                {
+                    prenoms.Add(ctrl.Text.Trim());
+                }
+            }
+            return prenoms;
+        }
+
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            string prenom = textBoxPrenom.Text;
-            Console.WriteLine(prenom);
+            string Nom = textBoxNom.Text.Trim();
+            string Prenom = textBoxPrenom.Text.Trim();
+            List<string> enfants = GetPrenomsEnfants();
+
+            L.AjouterContact(Nom, Prenom, enfants);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
