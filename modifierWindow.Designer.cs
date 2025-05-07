@@ -33,13 +33,14 @@
             btnAjouterWindow = new Button();
             btnModifContact = new Button();
             labelContacts = new Label();
-            flpContacts = new FlowLayoutPanel();
             labelPrenoms = new Label();
             flpEnfants = new FlowLayoutPanel();
-            updDownElement = new NumericUpDown();
-            textBoxNom = new TextBox();
-            textBoxPrenom = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)updDownElement).BeginInit();
+            updElement = new NumericUpDown();
+            txtNom = new TextBox();
+            txtPrenom = new TextBox();
+            lstContacts = new ListBox();
+            btnVisualiser = new Button();
+            ((System.ComponentModel.ISupportInitialize)updElement).BeginInit();
             SuspendLayout();
             // 
             // btnModifierWindow
@@ -93,14 +94,6 @@
             labelContacts.TabIndex = 32;
             labelContacts.Text = "Noms des contacts :";
             // 
-            // flpContacts
-            // 
-            flpContacts.AutoScroll = true;
-            flpContacts.Location = new Point(19, 171);
-            flpContacts.Name = "flpContacts";
-            flpContacts.Size = new Size(218, 132);
-            flpContacts.TabIndex = 31;
-            // 
             // labelPrenoms
             // 
             labelPrenoms.AutoSize = true;
@@ -113,47 +106,73 @@
             // flpEnfants
             // 
             flpEnfants.AutoScroll = true;
-            flpEnfants.Enabled = false;
             flpEnfants.Location = new Point(531, 171);
             flpEnfants.Name = "flpEnfants";
             flpEnfants.Size = new Size(250, 132);
             flpEnfants.TabIndex = 29;
             // 
-            // updDownElement
+            // updElement
             // 
-            updDownElement.Location = new Point(447, 276);
-            updDownElement.Name = "updDownElement";
-            updDownElement.Size = new Size(45, 27);
-            updDownElement.TabIndex = 28;
+            updElement.Enabled = false;
+            updElement.Location = new Point(447, 276);
+            updElement.Name = "updElement";
+            updElement.Size = new Size(45, 27);
+            updElement.TabIndex = 28;
+            updElement.ValueChanged += updElement_ValueChanged;
             // 
-            // textBoxNom
+            // txtNom
             // 
-            textBoxNom.Location = new Point(259, 211);
-            textBoxNom.Name = "textBoxNom";
-            textBoxNom.PlaceholderText = "Saisir nom";
-            textBoxNom.Size = new Size(233, 27);
-            textBoxNom.TabIndex = 27;
+            txtNom.Enabled = false;
+            txtNom.Location = new Point(259, 211);
+            txtNom.Name = "txtNom";
+            txtNom.PlaceholderText = "Saisir nom";
+            txtNom.Size = new Size(233, 27);
+            txtNom.TabIndex = 27;
+            txtNom.TextChanged += txtNom_TextChanged;
             // 
-            // textBoxPrenom
+            // txtPrenom
             // 
-            textBoxPrenom.Location = new Point(259, 166);
-            textBoxPrenom.Name = "textBoxPrenom";
-            textBoxPrenom.PlaceholderText = "Saisir prénom";
-            textBoxPrenom.Size = new Size(233, 27);
-            textBoxPrenom.TabIndex = 26;
+            txtPrenom.Enabled = false;
+            txtPrenom.Location = new Point(259, 166);
+            txtPrenom.Name = "txtPrenom";
+            txtPrenom.PlaceholderText = "Saisir prénom";
+            txtPrenom.Size = new Size(233, 27);
+            txtPrenom.TabIndex = 26;
+            txtPrenom.TextChanged += txtPrenom_TextChanged;
+            // 
+            // lstContacts
+            // 
+            lstContacts.FormattingEnabled = true;
+            lstContacts.Location = new Point(19, 179);
+            lstContacts.Name = "lstContacts";
+            lstContacts.Size = new Size(205, 124);
+            lstContacts.TabIndex = 33;
+            lstContacts.SelectedIndexChanged += lstContacts_SelectedIndexChanged;
+            // 
+            // btnVisualiser
+            // 
+            btnVisualiser.Enabled = false;
+            btnVisualiser.Location = new Point(19, 324);
+            btnVisualiser.Name = "btnVisualiser";
+            btnVisualiser.Size = new Size(205, 29);
+            btnVisualiser.TabIndex = 34;
+            btnVisualiser.Text = "Visualiser";
+            btnVisualiser.UseVisualStyleBackColor = true;
+            btnVisualiser.Click += btnVisualiser_Click;
             // 
             // modifierWindow
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnVisualiser);
+            Controls.Add(lstContacts);
             Controls.Add(labelContacts);
-            Controls.Add(flpContacts);
             Controls.Add(labelPrenoms);
             Controls.Add(flpEnfants);
-            Controls.Add(updDownElement);
-            Controls.Add(textBoxNom);
-            Controls.Add(textBoxPrenom);
+            Controls.Add(updElement);
+            Controls.Add(txtNom);
+            Controls.Add(txtPrenom);
             Controls.Add(btnModifContact);
             Controls.Add(btnModifierWindow);
             Controls.Add(btnSupprimerWindow);
@@ -161,7 +180,7 @@
             Name = "modifierWindow";
             Text = "Modifier Contact";
             Load += modifierWindow_Load;
-            ((System.ComponentModel.ISupportInitialize)updDownElement).EndInit();
+            ((System.ComponentModel.ISupportInitialize)updElement).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -173,11 +192,12 @@
         private Button btnAjouterWindow;
         private Button btnModifContact;
         private Label labelContacts;
-        private FlowLayoutPanel flpContacts;
         private Label labelPrenoms;
         private FlowLayoutPanel flpEnfants;
-        private NumericUpDown updDownElement;
-        private TextBox textBoxNom;
-        private TextBox textBoxPrenom;
+        private NumericUpDown updElement;
+        private TextBox txtNom;
+        private TextBox txtPrenom;
+        private ListBox lstContacts;
+        private Button btnVisualiser;
     }
 }

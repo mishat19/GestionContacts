@@ -126,6 +126,7 @@
             // flpEnfants
             // 
             flpEnfants.AutoScroll = true;
+            flpEnfants.Enabled = false;
             flpEnfants.Location = new Point(524, 164);
             flpEnfants.Name = "flpEnfants";
             flpEnfants.Size = new Size(250, 132);
