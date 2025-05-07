@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BiblioContacts;
 
 namespace FormNomExplicite
 {
     public partial class modifierWindow : Form
     {
-        public modifierWindow()
+        private ListeContacts liste;
+
+        public modifierWindow(ListeContacts listeContacts)
         {
             InitializeComponent();
+            liste = listeContacts;
         }
 
         private void modifierWindow_Load(object sender, EventArgs e)
@@ -24,14 +28,14 @@ namespace FormNomExplicite
 
         private void btnAjouterWindow_Click(object sender, EventArgs e)
         {
-            ajoutWindow ajout = new ajoutWindow();
+            ajoutWindow ajout = new ajoutWindow(liste);
             ajout.Show();
             this.Close();
         }
 
         private void btnSupprimerWindow_Click(object sender, EventArgs e)
         {
-            supprimerWindow supprimer = new supprimerWindow();
+            supprimerWindow supprimer = new supprimerWindow(liste);
             supprimer.Show();
             this.Close();
         }
@@ -43,8 +47,7 @@ namespace FormNomExplicite
 
         private void btnModifContact_Click(object sender, EventArgs e)
         {
-            modificationsWindow modifications = new modificationsWindow();
-            modifications.Show();
+            this.Owner.Show();
         }
     }
 }

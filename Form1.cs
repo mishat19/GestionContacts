@@ -27,20 +27,23 @@ namespace FormNomExplicite
         {
             //FormAjout frmAjout = new FormAjout();
             //frmAjout show();
-            ajoutWindow ajout = new ajoutWindow();
-            ajout.Show();
+            ajoutWindow ajout = new ajoutWindow(listeContacts);
+            ajout.Show(this);
+            this.Hide();
         }
 
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            supprimerWindow supprimer = new supprimerWindow();
-            supprimer.Show();
+            supprimerWindow supprimer = new supprimerWindow(listeContacts);
+            supprimer.Show(this);
+            this.Hide();
         }
 
         private void buttonModifier_Click(object sender, EventArgs e)
         {
-            modifierWindow modifier = new modifierWindow();
-            modifier.Show();
+            modifierWindow modifier = new modifierWindow(listeContacts);
+            modifier.Show(this);
+            this.Hide();
         }
 
         private void labelMessageSysteme_Click_1(object sender, EventArgs e)

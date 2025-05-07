@@ -19,7 +19,7 @@ namespace FormNomExplicite
 
         private void btnConfirmer_Click(object sender, EventArgs e)
         {
-            
+            this.Owner.Show();
         }
         private void btnAnnuler_Click(object sender, EventArgs e)
         {

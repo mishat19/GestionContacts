@@ -32,12 +32,12 @@
             btnSupprimerWindow = new Button();
             btnModifierWindow = new Button();
             btnEnregistrer = new Button();
-            textBoxPrenom = new TextBox();
-            textBoxNom = new TextBox();
-            updDownElement = new NumericUpDown();
+            txtPrenom = new TextBox();
+            txtNom = new TextBox();
+            updElement = new NumericUpDown();
             flpEnfants = new FlowLayoutPanel();
             labelPrenoms = new Label();
-            ((System.ComponentModel.ISupportInitialize)updDownElement).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)updElement).BeginInit();
             SuspendLayout();
             // 
             // btnAjouterWindow
@@ -82,31 +82,31 @@
             btnEnregistrer.UseVisualStyleBackColor = true;
             btnEnregistrer.Click += btnEnregistrer_Click;
             // 
-            // textBoxPrenom
+            // txtPrenom
             // 
-            textBoxPrenom.Location = new Point(120, 171);
-            textBoxPrenom.Name = "textBoxPrenom";
-            textBoxPrenom.PlaceholderText = "Saisir prénom";
-            textBoxPrenom.Size = new Size(339, 27);
-            textBoxPrenom.TabIndex = 5;
-            textBoxPrenom.TextChanged += textBox1_TextChanged;
+            txtPrenom.Location = new Point(120, 171);
+            txtPrenom.Name = "txtPrenom";
+            txtPrenom.PlaceholderText = "Saisir prénom";
+            txtPrenom.Size = new Size(339, 27);
+            txtPrenom.TabIndex = 5;
+            txtPrenom.TextChanged += textBox1_TextChanged;
             // 
-            // textBoxNom
+            // txtNom
             // 
-            textBoxNom.Location = new Point(120, 216);
-            textBoxNom.Name = "textBoxNom";
-            textBoxNom.PlaceholderText = "Saisir nom";
-            textBoxNom.Size = new Size(339, 27);
-            textBoxNom.TabIndex = 8;
-            textBoxNom.TextChanged += textBox4_TextChanged;
+            txtNom.Location = new Point(120, 216);
+            txtNom.Name = "txtNom";
+            txtNom.PlaceholderText = "Saisir nom";
+            txtNom.Size = new Size(339, 27);
+            txtNom.TabIndex = 8;
+            txtNom.TextChanged += textBox4_TextChanged;
             // 
-            // updDownElement
+            // updElement
             // 
-            updDownElement.Location = new Point(406, 281);
-            updDownElement.Name = "updDownElement";
-            updDownElement.Size = new Size(45, 27);
-            updDownElement.TabIndex = 11;
-            updDownElement.ValueChanged += nudElement_ValueChanged;
+            updElement.Location = new Point(406, 281);
+            updElement.Name = "updElement";
+            updElement.Size = new Size(45, 27);
+            updElement.TabIndex = 11;
+            updElement.ValueChanged += nudElement_ValueChanged;
             // 
             // flpEnfants
             // 
@@ -132,9 +132,9 @@
             ClientSize = new Size(800, 450);
             Controls.Add(labelPrenoms);
             Controls.Add(flpEnfants);
-            Controls.Add(updDownElement);
-            Controls.Add(textBoxNom);
-            Controls.Add(textBoxPrenom);
+            Controls.Add(updElement);
+            Controls.Add(txtNom);
+            Controls.Add(txtPrenom);
             Controls.Add(btnEnregistrer);
             Controls.Add(btnModifierWindow);
             Controls.Add(btnSupprimerWindow);
@@ -142,7 +142,7 @@
             Name = "ajoutWindow";
             Text = "Ajouter Contact";
             Load += ajoutWindow_Load;
-            ((System.ComponentModel.ISupportInitialize)updDownElement).EndInit();
+            ((System.ComponentModel.ISupportInitialize)updElement).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -153,9 +153,9 @@
         private Button btnSupprimerWindow;
         private Button btnModifierWindow;
         private Button btnEnregistrer;
-        private TextBox textBoxPrenom;
-        private TextBox textBoxNom;
-        private NumericUpDown updDownElement;
+        private TextBox txtPrenom;
+        private TextBox txtNom;
+        private NumericUpDown updElement;
         private FlowLayoutPanel flpEnfants;
         private Label labelPrenoms;
     }

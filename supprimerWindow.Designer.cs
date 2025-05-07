@@ -33,14 +33,14 @@
             btnAjouterWindow = new Button();
             btnSupprimer = new Button();
             btnVisualiser = new Button();
-            textBoxNom = new TextBox();
-            textBoxPrenom = new TextBox();
+            txtNom = new TextBox();
+            txtPrenom = new TextBox();
             labelPrenoms = new Label();
             flpEnfants = new FlowLayoutPanel();
-            updDownElement = new NumericUpDown();
+            updElement = new NumericUpDown();
             labelContacts = new Label();
             lstContacts = new ListBox();
-            ((System.ComponentModel.ISupportInitialize)updDownElement).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)updElement).BeginInit();
             SuspendLayout();
             // 
             // btnModifierWindow
@@ -76,6 +76,7 @@
             // 
             // btnSupprimer
             // 
+            btnSupprimer.Enabled = false;
             btnSupprimer.Location = new Point(654, 385);
             btnSupprimer.Name = "btnSupprimer";
             btnSupprimer.Size = new Size(102, 38);
@@ -87,29 +88,33 @@
             // btnVisualiser
             // 
             btnVisualiser.Enabled = false;
-            btnVisualiser.Location = new Point(29, 313);
+            btnVisualiser.Location = new Point(12, 310);
             btnVisualiser.Name = "btnVisualiser";
-            btnVisualiser.Size = new Size(188, 29);
+            btnVisualiser.Size = new Size(205, 29);
             btnVisualiser.TabIndex = 16;
             btnVisualiser.Text = "Visualiser";
             btnVisualiser.UseVisualStyleBackColor = true;
             btnVisualiser.Click += btnVisualiser_Click;
             // 
-            // textBoxNom
+            // txtNom
             // 
-            textBoxNom.Location = new Point(252, 204);
-            textBoxNom.Name = "textBoxNom";
-            textBoxNom.PlaceholderText = "Saisir nom";
-            textBoxNom.Size = new Size(233, 27);
-            textBoxNom.TabIndex = 20;
+            txtNom.Enabled = false;
+            txtNom.Location = new Point(252, 204);
+            txtNom.Name = "txtNom";
+            txtNom.PlaceholderText = "Saisir nom";
+            txtNom.Size = new Size(233, 27);
+            txtNom.TabIndex = 20;
+            txtNom.TextChanged += txtNom_TextChanged;
             // 
-            // textBoxPrenom
+            // txtPrenom
             // 
-            textBoxPrenom.Location = new Point(252, 159);
-            textBoxPrenom.Name = "textBoxPrenom";
-            textBoxPrenom.PlaceholderText = "Saisir prénom";
-            textBoxPrenom.Size = new Size(233, 27);
-            textBoxPrenom.TabIndex = 19;
+            txtPrenom.Enabled = false;
+            txtPrenom.Location = new Point(252, 159);
+            txtPrenom.Name = "txtPrenom";
+            txtPrenom.PlaceholderText = "Saisir prénom";
+            txtPrenom.Size = new Size(233, 27);
+            txtPrenom.TabIndex = 19;
+            txtPrenom.TextChanged += txtPrenom_TextChanged;
             // 
             // labelPrenoms
             // 
@@ -123,18 +128,19 @@
             // flpEnfants
             // 
             flpEnfants.AutoScroll = true;
-            flpEnfants.Enabled = false;
             flpEnfants.Location = new Point(524, 164);
             flpEnfants.Name = "flpEnfants";
             flpEnfants.Size = new Size(250, 132);
             flpEnfants.TabIndex = 22;
             // 
-            // updDownElement
+            // updElement
             // 
-            updDownElement.Location = new Point(440, 269);
-            updDownElement.Name = "updDownElement";
-            updDownElement.Size = new Size(45, 27);
-            updDownElement.TabIndex = 21;
+            updElement.Enabled = false;
+            updElement.Location = new Point(440, 269);
+            updElement.Name = "updElement";
+            updElement.Size = new Size(45, 27);
+            updElement.TabIndex = 21;
+            updElement.ValueChanged += updElement_ValueChanged;
             // 
             // labelContacts
             // 
@@ -164,9 +170,9 @@
             Controls.Add(labelContacts);
             Controls.Add(labelPrenoms);
             Controls.Add(flpEnfants);
-            Controls.Add(updDownElement);
-            Controls.Add(textBoxNom);
-            Controls.Add(textBoxPrenom);
+            Controls.Add(updElement);
+            Controls.Add(txtNom);
+            Controls.Add(txtPrenom);
             Controls.Add(btnVisualiser);
             Controls.Add(btnSupprimer);
             Controls.Add(btnModifierWindow);
@@ -175,7 +181,7 @@
             Name = "supprimerWindow";
             Text = "Supprimer Contact";
             Load += supprimerWindow_Load;
-            ((System.ComponentModel.ISupportInitialize)updDownElement).EndInit();
+            ((System.ComponentModel.ISupportInitialize)updElement).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -187,11 +193,11 @@
         private Button btnAjouterWindow;
         private Button btnSupprimer;
         private Button btnVisualiser;
-        private TextBox textBoxNom;
-        private TextBox textBoxPrenom;
+        private TextBox txtNom;
+        private TextBox txtPrenom;
         private Label labelPrenoms;
         private FlowLayoutPanel flpEnfants;
-        private NumericUpDown updDownElement;
+        private NumericUpDown updElement;
         private Label labelContacts;
         private ListBox lstContacts;
     }

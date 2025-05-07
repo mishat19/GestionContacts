@@ -13,10 +13,11 @@ namespace FormNomExplicite
 {
     public partial class supprimerWindow : Form
     {
-        private ListeContacts L;
+        private ListeContacts liste;
         public supprimerWindow(ListeContacts listContacts)
         {
             InitializeComponent();
+            liste = listContacts;
             RafraichirListeContacts();
         }
 
@@ -27,7 +28,7 @@ namespace FormNomExplicite
 
         private void btnAjouterWindow_Click(object sender, EventArgs e)
         {
-            ajoutWindow ajout = new ajoutWindow();
+            ajoutWindow ajout = new ajoutWindow(liste);
             ajout.Show();
             this.Close();
         }
@@ -39,15 +40,19 @@ namespace FormNomExplicite
 
         private void btnModifierWindow_Click(object sender, EventArgs e)
         {
-            modifierWindow modifier = new modifierWindow();
+            modifierWindow modifier = new modifierWindow(liste);
             modifier.Show();
             this.Close();
         }
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            confirmationWindow confirmation = new confirmationWindow();
-            confirmation.Show();
+            Form1 form = this.Owner as Form1;
+            if (form != null)
+            {
+                confirmationWindow confirmation = new confirmationWindow();
+                confirmation.Show(form);
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -58,7 +63,7 @@ namespace FormNomExplicite
         private void RafraichirListeContacts()
         {
             // Définir la source de données
-            lstContacts.DataSource = L.MesContacts;
+            lstContacts.DataSource = liste.MesContacts;
 
             // Définir les membres d'affichage et de valeur
             lstContacts.DisplayMember = "Nom"; // Affiche le nom du contact
@@ -67,13 +72,52 @@ namespace FormNomExplicite
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lstContacts.DisplayMember = "Nom";
-            lstContacts.ValueMember = "Id";
+
+            btnVisualiser.Enabled = true;
         }
 
         private void btnVisualiser_Click(object sender, EventArgs e)
         {
+            if (lstContacts.SelectedItem is Contact contact)
+            {
+                txtNom.Text = contact.Nom;
+                txtPrenom.Text = contact.Prenom;
+                updElement.Value = contact.PrenomsEnfants!.Count;
 
+                flpEnfants.Controls.Clear();
+
+                if (contact.PrenomsEnfants != null && contact.PrenomsEnfants.Count > 0)
+                {
+                    foreach (string enfant in contact.PrenomsEnfants)
+                    {
+                        TextBox newTextBox = new TextBox
+                        {
+                            Name = $"txtEnfant{enfant}",
+                            Text = enfant,
+                            Width = 200
+                        };
+                        flpEnfants.Controls.Add(newTextBox);
+                    }
+                }
+                txtNom.Enabled = true;
+                txtPrenom.Enabled = true;
+                updElement.Enabled = true;
+            }
+        }
+
+        private void txtPrenom_TextChanged(object sender, EventArgs e)
+        {
+            btnSupprimer.Enabled = true;
+        }
+
+        private void txtNom_TextChanged(object sender, EventArgs e)
+        {
+            btnSupprimer.Enabled = true;
+        }
+
+        private void updElement_ValueChanged(object sender, EventArgs e)
+        {
+            btnSupprimer.Enabled = true;
         }
     }
 }
