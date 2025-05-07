@@ -47,13 +47,30 @@ namespace FormNomExplicite
 
         private void btnSupprimer_Click(object sender, EventArgs e)
         {
-            Form1 form = this.Owner as Form1;
-            if (form != null)
+            if (lstContacts.SelectedItem is Contact contact)
             {
-                confirmationWindow confirmation = new confirmationWindow();
-                confirmation.Show(form);
+                DialogResult result = MessageBox.Show(
+                    $"Voulez-vous vraiment supprimer {contact.Prenom} {contact.Nom} ?",
+                    "Confirmation de suppression",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    liste.SupprimerContact(contact);
+                    MessageBox.Show("Contact supprimé avec succès.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    RafraichirListeContacts();
+                    if (this.Owner is Form1 form)
+                    {
+                        form.AfficherMessage($"{contact.Prenom} {contact.Nom} a été supprimé avec succès");
+                        form.Show();
+                    }
+                    this.Close();
+                }
             }
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -72,7 +89,7 @@ namespace FormNomExplicite
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
             btnVisualiser.Enabled = true;
         }
 
@@ -82,12 +99,11 @@ namespace FormNomExplicite
             {
                 txtNom.Text = contact.Nom;
                 txtPrenom.Text = contact.Prenom;
-                updElement.Value = contact.PrenomsEnfants!.Count;
 
                 flpEnfants.Controls.Clear();
 
-                if (contact.PrenomsEnfants != null && contact.PrenomsEnfants.Count > 0)
-                {
+                if (contact.PrenomsEnfants != null && contact.PrenomsEnfants.Count > 0) {
+                    updElement.Value = contact.PrenomsEnfants.Count;
                     foreach (string enfant in contact.PrenomsEnfants)
                     {
                         TextBox newTextBox = new TextBox
@@ -99,25 +115,8 @@ namespace FormNomExplicite
                         flpEnfants.Controls.Add(newTextBox);
                     }
                 }
-                txtNom.Enabled = true;
-                txtPrenom.Enabled = true;
-                updElement.Enabled = true;
-            }
-        }
-
-        private void txtPrenom_TextChanged(object sender, EventArgs e)
-        {
-            btnSupprimer.Enabled = true;
-        }
-
-        private void txtNom_TextChanged(object sender, EventArgs e)
-        {
-            btnSupprimer.Enabled = true;
-        }
-
-        private void updElement_ValueChanged(object sender, EventArgs e)
-        {
-            btnSupprimer.Enabled = true;
+                btnSupprimer.Enabled = true;
+             }
         }
     }
 }

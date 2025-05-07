@@ -104,7 +104,6 @@
             txtNom.PlaceholderText = "Saisir nom";
             txtNom.Size = new Size(233, 27);
             txtNom.TabIndex = 20;
-            txtNom.TextChanged += txtNom_TextChanged;
             // 
             // txtPrenom
             // 
@@ -114,7 +113,6 @@
             txtPrenom.PlaceholderText = "Saisir prénom";
             txtPrenom.Size = new Size(233, 27);
             txtPrenom.TabIndex = 19;
-            txtPrenom.TextChanged += txtPrenom_TextChanged;
             // 
             // labelPrenoms
             // 
@@ -140,7 +138,6 @@
             updElement.Name = "updElement";
             updElement.Size = new Size(45, 27);
             updElement.TabIndex = 21;
-            updElement.ValueChanged += updElement_ValueChanged;
             // 
             // labelContacts
             // 
